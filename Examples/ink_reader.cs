@@ -20,18 +20,25 @@ public partial class ink_reader : Node
         ContinueStory();
     }
 
-    private void ContinueStory()
+    private async void ContinueStory()
     {
+        GD.Print("Continuing the story...");
         string content = story.ContinueMaximally();
-		EmitSignal("StoryTextRead", content);
-		
+        GD.Print(content);
+        EmitSignal("StoryTextRead", content);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
+        GD.Print(story.CanContinue);
 		List<InkChoice> choices = story.CurrentChoices;
 		Godot.Collections.Array gdchoices = new Godot.Collections.Array();
 		foreach (InkChoice choice in choices){
 			gdchoices.Add(choice);
 		}
 		EmitSignal("ChoicesPrepared", gdchoices);
-
-        
+    }
+    private void MakeChoice(int index)
+    {
+        story.ChooseChoiceIndex(index);
+        ContinueStory();
     }
 }

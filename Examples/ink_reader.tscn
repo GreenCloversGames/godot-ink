@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7xgtlhmrhd"]
+[gd_scene load_steps=3 format=3 uid="uid://b7xgtlhmrhd"]
 
 [ext_resource type="Script" path="res://Examples/ink_reader.cs" id="1_shwix"]
+[ext_resource type="Resource" uid="uid://7c4xpy3v7ewp" path="res://Examples/TheIntercept.ink" id="2_qk8qg"]
 
 [node name="InkReader" type="Node"]
 script = ExtResource("1_shwix")
+story = ExtResource("2_qk8qg")
