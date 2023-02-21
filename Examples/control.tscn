@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://drr8jj85y5bku"]
+
+[ext_resource type="Script" path="res://Examples/control.gd" id="1_1t1l2"]
+[ext_resource type="PackedScene" uid="uid://b7xgtlhmrhd" path="res://Examples/ink_reader.tscn" id="2_ra7yy"]
+[ext_resource type="Resource" uid="uid://7c4xpy3v7ewp" path="res://Examples/TheIntercept.ink" id="2_t5727"]
+
+[node name="TestStory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1t1l2")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StoryReader" type="VBoxContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+
+[node name="InkReader" parent="." instance=ExtResource("2_ra7yy")]
+story = ExtResource("2_t5727")
+
+[connection signal="ChoicesPrepared" from="InkReader" to="." method="_on_ink_reader_choices_prepared"]
+[connection signal="StoryTextRead" from="InkReader" to="." method="_on_ink_reader_story_text_read"]

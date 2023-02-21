@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7xgtlhmrhd"]
+
+[ext_resource type="Script" path="res://Examples/ink_reader.cs" id="1_shwix"]
+
+[node name="InkReader" type="Node"]
+script = ExtResource("1_shwix")

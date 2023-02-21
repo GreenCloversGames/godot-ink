@@ -7,7 +7,8 @@ var _dock: Control
 
 
 func _enter_tree() -> void:
-	_importer = preload("res://addons/GodotInk/Src/InkStoryImporter.cs").new() as EditorImportPlugin
+	var script: CSharpScript = preload("res://addons/GodotInk/Src/InkStoryImporter.cs")
+	_importer = script.new() as EditorImportPlugin
 	add_import_plugin(_importer)
 
 	_dock = preload("res://addons/GodotInk/Src/InkDock.tscn").instantiate() as Control
